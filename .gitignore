@@ -1,0 +1,8 @@
+# ~/.gitignore
+*
+!.gitignore
+!.gitconfig
+!.vimrc
+!.screenrc
+!.zshrc
+!.zshenv
