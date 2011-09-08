@@ -1,0 +1,35 @@
+# character code
+defutf8 on
+defencoding utf8
+encoding utf-8 utf-8
+
+# set escape command to C-Z
+escape ^z^z
+
+# ignore locl
+bind x
+bind ^x
+
+# don't show startup message
+startup_message off
+# detach if screen is down
+autodetach on
+# off visible bell
+vbell off
+
+shelltitle '$ |bash'
+defscrollback 1024
+hardstatus alwayslastline "'Z'%H[%n] [%w]"
+multiuser on
+acladd eng,rec,demo,iac,root
+hardcopydir "$HOME/screenlog"
+defscrollback 100000
+logfile "$HOME/screenlog/%H-%Y%m%d-%c-%n.log"
+screen 1
+
+bind c eval 'screen 1'
+bind u encoding utf8
+bind e encoding eucJP
+bind s eval 'split' 'focus' 'screen 1'
+bind q only
+bind w windowlist -b
