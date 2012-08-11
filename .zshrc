@@ -210,6 +210,10 @@ alias su="su -l"
 alias g="git"
 alias v="vim"
 alias r="rails"
+alias be="bundle exec"
+alias hb="hub browse"
+alias gg="git grep"
+alias irb="pry"
  
 ## terminal configuration
 #
@@ -256,7 +260,9 @@ xterm|xterm-color|kterm|kterm-color)
     }
     ;;
 esac
- 
+
+# editor
+export EDITOR=vim
  
 #:q
 # load user .zshrc configuration file
@@ -265,3 +271,13 @@ esac
  
 # rvm
 #[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
+
+# rbenv
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
+
+# nave (for node.js)
+# refs http://d.hatena.ne.jp/teppeis/20110925/1316964759
+#if [ ${NAVELVL-0} -lt 1 ]; then
+#  nave use stable
+#fi
