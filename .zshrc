@@ -19,6 +19,22 @@ esac
 #
 autoload colors
 colors
+
+# VCS
+autoload -Uz vcs_info
+zstyle ':vcs_info:*' get-revision true
+zstyle ':vcs_info:*' check-for-changes true
+zstyle ':vcs_info:*' stagedstr "# "
+zstyle ':vcs_info:*' unstagedstr "+ "
+zstyle ':vcs_info:*' formats '(%c%u%s:%b@%10.10i)'
+zstyle ':vcs_info:*' actionformats '(%c%u%s:%b@i|%a)'
+
+precmd () {
+    #VCS
+    psvar=()
+    LANG=en_US.UTF-8 vcs_info
+    [[ -n "$vcs_info_msg_0_" ]] && psvar[1]="$vcs_info_msg_0_"
+}
  
 case ${UID} in
 0)
@@ -31,7 +47,7 @@ case ${UID} in
     PROMPT="%{${fg[red]}%}%n@%m%%%{${reset_color}%} "
     PROMPT2="%{${fg[red]}%}%_%%%{${reset_color}%} "
     SPROMPT="%{${fg[red]}%}%r is correct? [n,y,a,e]:%{${reset_color}%} "
-    RPROMPT="%{${fg[green]}%}[%~:%T]%{${reset_color}%}"
+    RPROMPT="%1(v|%F{white}%1v%f|)%{${fg[green]}%}[%~:%T]%{${reset_color}%}"
     [ -n "${REMOTEHOST}${SSH_CONNECTION}" ] &&
         PROMPT="%{${fg[cyan]}%}$(echo ${HOST%%.*} | tr '[a-z]' '[A-Z]') ${PROMPT}"
     ;;
@@ -281,3 +297,9 @@ eval "$(rbenv init -)"
 #if [ ${NAVELVL-0} -lt 1 ]; then
 #  nave use stable
 #fi
+alias uaac="nocorrect uaac"
+alias scala="nocorrect scala"
+source ~/zaw/zaw.zsh
+bindkey '^P' history-beginning-search-backward
+bindkey '^N' history-beginning-search-forward
+bindkey '^xb' zaw-git-branches

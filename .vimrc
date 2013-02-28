@@ -29,3 +29,11 @@ onoremap gc :<C-u>normal gc<Enter>
 ":set encoding=utf-8
 ":set fileencodings=iso-2022-jp,euc-jp,sjis,utf-8
 ":set fileformats=unix,dos,mac
+
+au QuickfixCmdPost make,grep,grepadd,vimgrep copen
+
+"[vim]vimで、行末のスペースをハイライトさせる設定Add Star
+"http://d.hatena.ne.jp/kasahi/20070902/1188744907
+highlight WhitespaceEOL ctermbg=red guibg=red
+match WhitespaceEOL /\s\+$/
+autocmd WinEnter * match WhitespaceEOL /\s\+$/

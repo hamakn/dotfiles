@@ -1,4 +1,5 @@
 # http://logrepo.blogspot.com/2010/12/zsh.html
+export PATH=/usr/local/bin:$PATH
 export PATH=/opt/local/bin:/opt/local/sbin:$PATH
 
 # path for mysql
