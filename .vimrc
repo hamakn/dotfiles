@@ -13,6 +13,7 @@ set ignorecase
 set smartcase
 set t_kD=^?
 set backspace=indent,eol,start
+set noswapfile
 
 nnoremap <Space>.  :<C-u>edit $MYVIMRC<Enter>
 nnoremap <Space>s. :<C-u>source $MYVIMRC<Enter>
@@ -37,3 +38,13 @@ au QuickfixCmdPost make,grep,grepadd,vimgrep copen
 highlight WhitespaceEOL ctermbg=red guibg=red
 match WhitespaceEOL /\s\+$/
 autocmd WinEnter * match WhitespaceEOL /\s\+$/
+
+"for perl
+au BufNewFile,BufRead *.pl  set nowrap tabstop=4 shiftwidth=4
+au BufNewFile,BufRead *.pm  set nowrap tabstop=4 shiftwidth=4
+au BufNewFile,BufRead *.t   set nowrap tabstop=4 shiftwidth=4
+autocmd BufNewFile,BufRead *.pm set filetype=perl
+autocmd BufNewFile,BufRead *.t  set filetype=perl
+"for perltidy
+map ,ptv <Esc>:'<,'>! perltidy<CR>
+map ,pta <Esc>:%! perltidy<CR>
