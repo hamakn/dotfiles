@@ -303,6 +303,7 @@ source ~/zaw/zaw.zsh
 bindkey '^P' history-beginning-search-backward
 bindkey '^N' history-beginning-search-forward
 bindkey '^xb' zaw-git-branches
+bindkey '^xh' zaw-history
 
 # perlbew
 source ~/perl5/perlbrew/etc/bashrc
