@@ -39,6 +39,11 @@ highlight WhitespaceEOL ctermbg=red guibg=red
 match WhitespaceEOL /\s\+$/
 autocmd WinEnter * match WhitespaceEOL /\s\+$/
 
+"for go
+if $GOROOT != ''
+  set rtp+=$GOROOT/misc/vim
+endif
+
 "for perl
 au BufNewFile,BufRead *.pl  set nowrap tabstop=4 shiftwidth=4
 au BufNewFile,BufRead *.pm  set nowrap tabstop=4 shiftwidth=4
