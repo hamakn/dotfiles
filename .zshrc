@@ -226,10 +226,12 @@ alias su="su -l"
 alias g="git"
 alias v="vim"
 alias r="rails"
+alias l="git g"
 alias be="bundle exec"
 alias hb="hub browse"
 alias gg="git grep"
 alias irb="pry"
+alias dc="cd"
  
 ## terminal configuration
 #
