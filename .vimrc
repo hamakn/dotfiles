@@ -1,10 +1,55 @@
+"---------------------------
+" Start Neobundle Settings.
+"---------------------------
+" bundleで管理するディレクトリを指定
+set runtimepath+=~/.vim/bundle/neobundle.vim/
+
+" Required:
+call neobundle#begin(expand('~/.vim/bundle/'))
+
+" neobundle自体をneobundleで管理
+NeoBundleFetch 'Shougo/neobundle.vim'
+
+" NERDTreeを設定
+NeoBundle 'scrooloose/nerdtree'
+" for coffee
+" syntax + 自動compile
+NeoBundle 'kchmck/vim-coffee-script'
+" indentの深さに色を付ける
+NeoBundle 'nathanaelkane/vim-indent-guides'
+
+call neobundle#end()
+
+" Required:
+filetype plugin indent on
+
+" 未インストールのプラグインがある場合、インストールするかどうかを尋ねてくれるようにする設定
+" 毎回聞かれると邪魔な場合もあるので、この設定は任意です。
+NeoBundleCheck
+
+"-------------------------
+" End Neobundle Settings.
+"-------------------------
+
+"------------------------------------
+" indent_guides
+"------------------------------------
+" インデントの深さに色を付ける
+" vim-indent-guides
+let g:indent_guides_auto_colors = 0
+autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=red   ctermbg=3
+autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=green ctermbg=4
+hi IndentGuidesOdd  guibg=red   ctermbg=3
+hi IndentGuidesEven guibg=green ctermbg=4
+hi IndentGuidesOdd  ctermbg=black
+hi IndentGuidesEven ctermbg=darkgrey
+
 set tabstop=2
 set shiftwidth=2
 set expandtab
 set autoindent
 set nocompatible
 syntax enable
-filetype plugin indent on
 
 set showmatch
 set matchtime=2
@@ -53,3 +98,16 @@ autocmd BufNewFile,BufRead *.t  set filetype=perl
 "for perltidy
 map ,ptv <Esc>:'<,'>! perltidy<CR>
 map ,pta <Esc>:%! perltidy<CR>
+
+"for coffee
+" vimにcoffeeファイルタイプを認識させる
+au BufRead,BufNewFile,BufReadPre *.coffee   set filetype=coffee
+" インデントを設定
+autocmd FileType coffee     setlocal sw=2 sts=2 ts=2 et
+
+"------------------------------------
+" vim-coffee-script
+"------------------------------------
+" 保存時にコンパイル
+"autocmd BufWritePost *.coffee silent :make! -cb | cwindow | redraw!
+
