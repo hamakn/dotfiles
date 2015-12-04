@@ -1,6 +1,7 @@
 # copy from cheat git
 [user]
-  email = hamakata@gmail.com
+  #email = hamakata@gmail.com
+  email = katsunori.kawaguchi@dena.jp
   name = Katsunori Kawaguchi
 
 [color]
