@@ -309,3 +309,9 @@ bindkey '^xh' zaw-history
 
 # perlbew
 source ~/perl5/perlbrew/etc/bashrc
+
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"
+
+## Android
+PATH=$PATH:~/pj/android/sdk/platform-tools:~/pj/android/sdk/tools/
