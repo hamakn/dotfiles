@@ -46,7 +46,9 @@
   ls = ls-files
   cp = cherry-pick
 
-[pager]
-  log = diff-highlight | less
-  show = diff-highlight | less
-  diff = diff-highlight | less
+#[pager]
+#  log = diff-highlight | less
+#  show = diff-highlight | less
+#  diff = diff-highlight | less
+[ghq]
+	root = /Users/katsunori.kawaguchi/pj/golang/src

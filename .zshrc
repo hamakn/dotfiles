@@ -1,6 +1,6 @@
 # thanks to http://blog.veryposi.info/server/server-setup/mac-product-env-zsh/
 # users generic .zshrc file for zsh(1)
- 
+
 ## Environment variable configuration
 #
 # LANG
@@ -228,6 +228,8 @@ alias v="vim"
 alias r="rails"
 alias l="git g"
 alias be="bundle exec"
+alias ibe="BUNDLE_GEMFILE=Gemfile.in bundle exec"
+alias ibundle="BUNDLE_GEMFILE=Gemfile.in bundle"
 alias hb="hub browse"
 alias gg="git grep"
 alias irb="pry"
@@ -290,17 +292,6 @@ export EDITOR=vim
 # rvm
 #[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
 
-# rbenv
-export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init -)"
-
-# nave (for node.js)
-# refs http://d.hatena.ne.jp/teppeis/20110925/1316964759
-#if [ ${NAVELVL-0} -lt 1 ]; then
-#  nave use stable
-#fi
-alias uaac="nocorrect uaac"
-alias scala="nocorrect scala"
 source ~/zaw/zaw.zsh
 bindkey '^P' history-beginning-search-backward
 bindkey '^N' history-beginning-search-forward
@@ -315,3 +306,24 @@ export PATH="/usr/local/heroku/bin:$PATH"
 
 ## Android
 PATH=$PATH:~/pj/android/sdk/platform-tools:~/pj/android/sdk/tools/
+
+# nodebrew
+#export PATH=$HOME/.nodebrew/current/bin:$PATH
+# ndenv
+export PATH="$HOME/.ndenv/bin:$PATH"
+eval "$(ndenv init -)"
+
+alias adb="/Users/katsunori.kawaguchi/Library/Android/sdk/platform-tools/adb"
+
+# path for go
+export GOPATH=$HOME/pj/golang
+export GOROOT=/usr/local/opt/go/libexec
+export PATH=$GOPATH/bin:$PATH
+export PATH=$GOROOT/bin:$PATH
+# go test ./path/to/package/... でcorrectされるのを防ぎたい
+alias go="nocorrect go"
+
+# rbenv
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
+

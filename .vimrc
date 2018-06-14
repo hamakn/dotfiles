@@ -1,6 +1,18 @@
 "---------------------------
 " Start Neobundle Settings.
 "---------------------------
+
+set encoding=utf-8
+"set fileencodings=iso-2022-jp,euc-jp,sjis,utf-8
+"set fileformats=unix,dos,mac
+
+" Note: Skip initialization for vim-tiny or vim-small.
+if 0 | endif
+
+if &compatible
+  set nocompatible               " Be iMproved
+endif
+
 " bundleで管理するディレクトリを指定
 set runtimepath+=~/.vim/bundle/neobundle.vim/
 
@@ -17,6 +29,8 @@ NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'kchmck/vim-coffee-script'
 " indentの深さに色を付ける
 NeoBundle 'nathanaelkane/vim-indent-guides'
+" vim-go
+NeoBundle 'fatih/vim-go'
 
 call neobundle#end()
 
@@ -84,11 +98,6 @@ highlight WhitespaceEOL ctermbg=red guibg=red
 match WhitespaceEOL /\s\+$/
 autocmd WinEnter * match WhitespaceEOL /\s\+$/
 
-"for go
-if $GOROOT != ''
-  set rtp+=$GOROOT/misc/vim
-endif
-
 "for perl
 au BufNewFile,BufRead *.pl  set nowrap tabstop=4 shiftwidth=4
 au BufNewFile,BufRead *.pm  set nowrap tabstop=4 shiftwidth=4
@@ -111,3 +120,16 @@ autocmd FileType coffee     setlocal sw=2 sts=2 ts=2 et
 " 保存時にコンパイル
 "autocmd BufWritePost *.coffee silent :make! -cb | cwindow | redraw!
 
+""for go
+"if $GOROOT != ''
+"  set rtp+=$GOROOT/misc/vim
+"endif
+"
+""------------------------------------
+"" vim-go
+""------------------------------------
+"call plug#begin()
+"Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
+"call plug#end()
+" GoImportsを保存時に実行する
+let g:go_fmt_command = "goimports"
