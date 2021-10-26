@@ -281,37 +281,47 @@ esac
 
 # editor
 export EDITOR=vim
+
+# anyenv
+export PATH="$HOME/.anyenv/bin:$PATH"
+eval "$(anyenv init -)"
  
-#:q
 # load user .zshrc configuration file
 #
 [ -f ${HOME}/.zshrc.mine ] && source ${HOME}/.zshrc.mine
  
-# rvm
-#[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
-
-# rbenv
-export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init -)"
+# # rbenv
+# export PATH="$HOME/.rbenv/bin:$PATH"
+# eval "$(rbenv init -)"
 
 # nave (for node.js)
 # refs http://d.hatena.ne.jp/teppeis/20110925/1316964759
 #if [ ${NAVELVL-0} -lt 1 ]; then
 #  nave use stable
 #fi
-alias uaac="nocorrect uaac"
-alias scala="nocorrect scala"
-source ~/zaw/zaw.zsh
-bindkey '^P' history-beginning-search-backward
-bindkey '^N' history-beginning-search-forward
-bindkey '^xb' zaw-git-branches
-bindkey '^xh' zaw-history
+# alias uaac="nocorrect uaac"
+# alias scala="nocorrect scala"
+# source ~/zaw/zaw.zsh
+# bindkey '^P' history-beginning-search-backward
+# bindkey '^N' history-beginning-search-forward
+# bindkey '^xb' zaw-git-branches
+# bindkey '^xh' zaw-history
 
-# perlbew
-source ~/perl5/perlbrew/etc/bashrc
+# # perlbew
+# source ~/perl5/perlbrew/etc/bashrc
 
-### Added by the Heroku Toolbelt
-export PATH="/usr/local/heroku/bin:$PATH"
+# ### Added by the Heroku Toolbelt
+# export PATH="/usr/local/heroku/bin:$PATH"
 
-## Android
-PATH=$PATH:~/pj/android/sdk/platform-tools:~/pj/android/sdk/tools/
+# ## Android
+# PATH=$PATH:~/pj/android/sdk/platform-tools:~/pj/android/sdk/tools/
+
+# direnv
+eval "$(direnv hook zsh)"
+
+# gcloud auth login忘れを警告するやつ:
+autoload -Uz add-zsh-hook
+add-zsh-hook preexec my_preexec
+my_preexec() {
+  sh ~/dev/src/bitbucket.org/hamakn/gcloud_support/warn_re_auth_login.sh $1
+}

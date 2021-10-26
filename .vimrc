@@ -18,6 +18,12 @@ NeoBundle 'kchmck/vim-coffee-script'
 " indentの深さに色を付ける
 NeoBundle 'nathanaelkane/vim-indent-guides'
 
+" vim-go
+NeoBundle 'fatih/vim-go'
+
+" plantuml
+NeoBundle "aklt/plantuml-syntax"
+
 call neobundle#end()
 
 " Required:
@@ -111,3 +117,18 @@ autocmd FileType coffee     setlocal sw=2 sts=2 ts=2 et
 " 保存時にコンパイル
 "autocmd BufWritePost *.coffee silent :make! -cb | cwindow | redraw!
 
+let g:go_fmt_command = "goimports"
+
+" local設定を可能にする
+" https://qiita.com/unosk/items/43989b61eff48e0665f3
+augroup vimrc-local
+  autocmd!
+  autocmd BufNewFile,BufReadPost * call s:vimrc_local(expand('<afile>:p:h'))
+augroup END
+
+function! s:vimrc_local(loc)
+  let files = findfile('.vimrc.local', escape(a:loc, ' ') . ';', -1)
+  for i in reverse(filter(files, 'filereadable(v:val)'))
+    source `=i`
+  endfor
+endfunction

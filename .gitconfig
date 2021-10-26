@@ -1,6 +1,7 @@
 # copy from cheat git
 [user]
-  email = hamakata@gmail.com
+  # email = hamakata@gmail.com
+  email = hamakn@mercari.com
   name = Katsunori Kawaguchi
 
 [color]
@@ -49,3 +50,5 @@
   log = diff-highlight | less
   show = diff-highlight | less
   diff = diff-highlight | less
+[ghq]
+	root = /Users/hamakn/dev/src
